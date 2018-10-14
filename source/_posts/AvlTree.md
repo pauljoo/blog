@@ -1,8 +1,9 @@
 ---
 title: AvlTree
 date: 2018-10-14 12:33:05
-tags:
+categories:
 - DataStructure
+tags:
 ---
 
 AVL树使带有平衡条件的二叉查找树。
