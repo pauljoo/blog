@@ -11,3 +11,7 @@ hexo generate
 ## deploy
 
 hexo deploy
+
+## clean
+
+hexo clean
