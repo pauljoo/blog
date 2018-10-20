@@ -24,7 +24,12 @@ yum makecache
 4. 安装docker  
 yum install docker
 
-
+## Docker Registry搭建  
+```
+docker run -d -p 5000:5000 -v /data/registry:/var/lib/registry --restart=always --name registry registry:2
+docker push 192.168.1.62:5000/xpanda/busybox
+docker pull 192.168.1.62:5000/xpanda/busybox
+```
 ## 常用Docker命令
 
 ```
@@ -44,4 +49,6 @@ docker build -t xpanda/nginx:1.12.2 .
 docker run -d -p 8080:8080 -p 443:443 --ip 10.20.0.1 -v /data/configs/nginx/conf.d:/etc/nginx/conf.d -v /data/configs/nginx/certs:/etc/nginx/certs xpanda/nginx:1.12.2
 #进入容器
 docker exec -it 5c61a04b14fc /bin/bash
+#日志查看
+journalctl -u docker.service -n
 ```
