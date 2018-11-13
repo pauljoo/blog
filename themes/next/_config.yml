@@ -482,7 +482,7 @@ pangu: false
 #swiftype_key: 
 
 # Baidu Analytics ID
-#baidu_analytics: 
+baidu_analytics: 491c3ccef3fc6b3b766f88ca5d0e4d62
 
 # Growingio Analytics ID
 # Copyright 2015-2018 GrowingIO, Inc. More info available at http://www.growingio.com
