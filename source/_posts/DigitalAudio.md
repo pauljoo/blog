@@ -2,7 +2,7 @@
 title: 数字音频
 date: 2018-05-26 21:57:10
 categories:
-- MultiMedia
+- 多媒体
 tags:
 ---
 

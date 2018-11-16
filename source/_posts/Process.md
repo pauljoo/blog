@@ -2,7 +2,7 @@
 title: Process
 date: 2018-11-04 11:13:21
 categories:
-- OS
+- 操作系统
 tags:
 ---
 

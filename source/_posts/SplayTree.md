@@ -2,7 +2,7 @@
 title: SplayTree
 date: 2018-10-14 12:33:19
 categories:
-- DataStructure
+- 数据结构
 tags:
 ---
 

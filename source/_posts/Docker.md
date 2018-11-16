@@ -2,9 +2,9 @@
 title: Docker
 date: 2018-10-14 12:19:28
 categories:
-- Virtual
-- Docker
+- 虚拟化
 tags:
+- Docker
 ---
 
 ## Docker安装

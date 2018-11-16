@@ -2,7 +2,7 @@
 title: Stack
 date: 2018-10-14 12:31:55
 categories:
-- DataStructure
+- 数据结构
 tags:
 ---
 
