@@ -1,6 +1,8 @@
 ---
-title: ES5
+title: JavaScript-ES5
 date: 2018-11-16 20:04:03
+categories:
+- 语言
 tags:
 ---
 一个完整的JavaScript实现包含了三个部分：
