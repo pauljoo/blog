@@ -7,7 +7,7 @@ tags:
 ---
 FLV文件由FLV Header和FLV Body组成
 
-1  FLV Header
+1  FLV Header  
 |字段|	类型|	备注|
 |-|-|-|
 |标签|	UI8,1字节|	F,0x46|
@@ -20,7 +20,7 @@ FLV文件由FLV Header和FLV Body组成
 |视频标记|	UB[1],1bit|	是否存在视频|
 |数据偏移|	UI32,4字节|	从文件开始到文件body的偏移(文件头的大小)|
 
-2  FLV Body
+2  FLV Body  
 |字段|	类型|	备注|
 |-|-|-|
 |PreviousTagSize0|	UI32,4字节|	0|
@@ -32,7 +32,7 @@ FLV文件由FLV Header和FLV Body组成
 |TagN|	FLVTAG|	第N个tag|
 |PreviousTagSizeN|	UI32,4字节|	第N个tag大小|
 
-3  FLV Tags
+3  FLV Tags  
 |字段|	类型|	备注|
 |-|-|-|
 |tag类型|	UI8|	8:音频 9:视频 18:脚本数据 其他为保留|
