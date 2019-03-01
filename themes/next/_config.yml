@@ -194,8 +194,9 @@ links_icon: link
 links_title: Links
 links_layout: block
 #links_layout: inline
-#links:
-  #Title: http://example.com/
+links:
+  褚霸: http://www.yufeng.info/
+  章亦春: http://agentzh.org/
 
 # Sidebar Avatar
 avatar:
