@@ -1,5 +1,5 @@
 ---
-title: Linux-Shell
+title: Linux-shell
 date: 2018-10-01 11:28:00
 categories:
 - 操作系统
@@ -69,3 +69,182 @@ echo $a
 |-|-|
 |$1,$2,...|脚本程序的参数|
 |$*|列出所有|
+
+### 条件
+
+#### test或[
+
+在一些老版本的UNIX shell中，test命令调用的是一个外部程序。可以使用which test来检查执行的是哪一个test命令。
+
+```shell
+if test -f fred.c
+then
+...
+fi
+
+if [ -f fred.c ]
+then
+...
+fi
+```
+
+|字符串比较|结果|
+|-|-|
+|string1 = string2||
+|string1 != string2||
+|-n strng|如果字符串不为空则结果为真|
+|-z string|如果字符串为Null(一个空串)则结果为真|
+
+|算术比较|结果|
+|-|-|
+|expression1 -eq expression2|如果两个表达式相等则结果为真|
+|expression1 -ne expression2|如果两个表达式不等则结果为真|
+|expression1 -gt expression2|如果expression1大于expression2则结果为真|
+|expression1 -ge expression2|如果expression1大于等于expression2则结果为真|
+|expression1 -lt expression2|如果expression1小于expression2则结果为真|
+|expression1 -le expression2|如果expression1小于等于expression2则结果为真|
+|!expression|如果表达式为假则结果为真|
+
+|文件条件测试|结果|
+|-|-|
+|-d file|如果是目录|
+|-e file|如果文件存在|
+|-f file|如果是普通文件|
+|-g file|如果set-group-id位被设置|
+|-r file|如果文件刻度|
+|-s file|如果文件大小不为0|
+|-u file|如果set-user-id位被设置|
+|-w file|如果文件可写|
+|-x file|如果文件可执行|
+
+### 控制结构
+
+#### if语句
+
+```shell
+if condition
+then
+  statements
+elif
+  statements
+else
+  statements
+fi
+```
+
+#### for语句
+
+```shell
+for variable in values
+do
+  statements
+done
+```
+
+#### while语句
+
+```shell
+while condition do
+  statements
+done
+```
+
+#### until语句
+
+```shell
+until condition
+do
+  statements
+done
+```
+
+#### case语句
+
+```shell
+case variable in
+  pattern [|pattern]...) statements;;
+  pattern [|pattern]...) statements;;
+  ...
+esac
+
+case "$timeofday" in
+  yes) echo "Good Morning";;
+  no ) echo "Good Afternonn";;
+  ...
+esac
+```
+
+#### AND和OR语句
+
+```shell
+statement1 && statement2 && statement3
+statement1 || statement2 || statement3
+```
+
+#### 语句块
+
+```shell
+get_confirm && {
+  grep -v "$cdcatnum" $tracks_file > $temp_file
+}
+```
+
+### 函数
+
+必须在调用一个函数之前先对它进行定义。当一个函数被调用时，脚本程序的位置参数($*,$@,$#,$1等)会被替换为函数的参数。当函数执行完毕后，这些参数会恢复为它们先前的值。
+
+```shell
+function_names(){
+  statements
+}
+```
+
+### 命令
+
+#### break命令
+
+用于跳出循环
+
+#### :冒号命令
+
+冒号（:）命令是一个空命令。用于简化条件逻辑，相当于true的别名，比true快。
+
+```shell
+# 无限循环
+while :
+
+# 条件设置
+: ${var:=value}
+```
+
+#### continue命令
+
+继续循环
+
+#### .命令
+
+点(.)命令用于在当前shell中执行命令。点命令实在当前上下文中执行命令，所以可以改变当前脚本中的变量参数。
+
+```shell
+. ./shell_script
+```
+
+#### echo命令
+
+输出字符串
+
+```shell
+echo -n "string to output"
+```
+
+#### eval命令
+
+对参数进行求值
+
+```shell
+foo=10
+x=foo
+eval y='$'$x
+echo $y
+#输出10
+```
