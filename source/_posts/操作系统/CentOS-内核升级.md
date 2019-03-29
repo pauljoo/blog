@@ -36,7 +36,7 @@ https://wiki.centos.org/HowTos/Custom_Kernel
 yum install -y rpm-build rpmdevtools
 
 yum groupinstall -y "Development Tools"
-yum install -y asciidoc bc m4 net-tools openssl-devel xmlto audit-libs-devel binutils-devel bison elfutils-devel java-1.8.0-openjdk-devel newt-devel numactl-devel perl python-devel slang-devel	xz-devel	zlib-devel ncurses-devel pciutils pciutils-devel
+yum install -y asciidoc bc m4 net-tools openssl-devel xmlto audit-libs-devel binutils-devel bison elfutils-devel java-1.8.0-openjdk-devel newt-devel numactl-devel perl-ExtUtils-Embed python-devel slang-devel	xz-devel	zlib-devel ncurses-devel pciutils pciutils-devel
 # 生成目录
 rpmdev-setuptree
 
