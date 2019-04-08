@@ -1,6 +1,6 @@
 ---
 title: HotSpot实战-2启动
-date: 2018-11-15 00:00:00
+date: 2018-11-15 00:02:00
 categories:
 - Java
 tags:
@@ -23,7 +23,7 @@ java [ option ] class [ argument ... ]
 
 > 入口：hostspor/src/share/tools/luncher/java.c
 
-# 虚拟机生命zhouqi
+# 虚拟机生命周期
 
 ```sequence
 Title: 虚拟机生命周期

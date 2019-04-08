@@ -7,13 +7,13 @@ tags:
 - Zookeeper
 ---
 
-# 环境
+## 环境
 
 - CentOS Linux release 7.4.1708
 - OpenJDK Runtime Environment (build 1.8.0_131-b12)
 - zookeeper-3.4.8
 
-# 配置
+## 配置
 
 ```shell
 # begin 1
@@ -54,7 +54,7 @@ server.2=10.0.2.15:2988:3988
 # end 3
 ```
 
-# 启动
+## 启动
 
 ```shell
 zkServer.sh start
