@@ -25,8 +25,8 @@ java [ option ] class [ argument ... ]
 
 # 虚拟机生命周期
 
-```sequence
+{% plantuml %}
 Title: 虚拟机生命周期
 Launcher->Launcher: main()
 Launcher->线程JavaMain: JavaMain()
-```
+{% endplantuml %}

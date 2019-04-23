@@ -2,7 +2,7 @@
 title: Markdown-数学公式
 date: 2018-12-30 16:55:58
 categories:
-- Markdown
+- 其他
 tags:
 mathjax: true
 ---
@@ -15,7 +15,14 @@ mathjax: true
 
 语句为`$$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$$`
 
+{% raw %}
 $$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$$
+<script src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({text2jax: {inlineMath: [['$','$'], ['\\(', '\\)']]}});
+</script>
+{% endraw %}
+
 
 ## 希腊字母
 
