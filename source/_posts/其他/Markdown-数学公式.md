@@ -17,7 +17,7 @@ mathjax: true
 
 {% raw %}
 $$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$$
-<script src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({text2jax: {inlineMath: [['$','$'], ['\\(', '\\)']]}});
 </script>
