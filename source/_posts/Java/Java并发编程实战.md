@@ -30,3 +30,5 @@ tags:
 ## AQS
 
 AbstraceQueuedSynchronizer是一个用于构建锁和同步器的框架，许多同步器都可以通过AQS很容易并且高效地构造出来。
+
+它维护了一个volatile int state（代表共享资源）和一个FIFO线程等待队列（多线程争用资源被阻塞时会进入此队列）。

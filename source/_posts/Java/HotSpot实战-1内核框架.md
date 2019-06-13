@@ -49,59 +49,16 @@ tags:
 |||tools||独立的虚拟机工具程序|
 |test||||测试用例|
 
-### prims
+### Prims
 
 prims模块定义了外部接口，允许外部程序访问内部状态信息。
 
-1. jni模块
+比如，jni模块，jvm模块，jvmti模块，perf模块。
 
-定义了jni_为前缀命名的函数，提供java运行时接口，允许外部程序调用由C/C++实现的库函数。
-2. jvm模块
+### Services
 
-定义了jvm_为前缀命名的函数，作为标准jni接口的补充，在头文件jvm.h中声明。1.访问本地库的API，2.字节码验证和class文件格式验证,3.java io和网络API。
-3. jvmti模块
+services模块主要包含9个主要子模块(management,memory service,thread service, runtime service, memory manager, heap dumper, classloading service, memory pool,attach listener)。
 
-定义了jvmti_为前缀命名的函数，允许程序员创建代理以监视和控制java应用程序。
-4. perf模块
-
-定义了perf_为前缀命名的函数，以监控虚拟机内部的perf data计数器。
-5. services模块
-
-主要包含9个主要子模块(management,memory service,thread service, runtime service, memory manager, heap dumper, classloading service, memory pool,attach listener)。
-
-- management
-
-提供jmx底层实现的基础
-
-- memory service
-
-提供jvm内存管理服务。如堆的分配和内存池的管理等。
-
-- thread service
-
-- runtime service
-
-提供java运行时的性能监控和管理服务，如applicationTime、jvmCapabilities。
-
-- memory manager
-
-内存管理器。一个内存管理器负责管理一个或多个内存池。垃圾收集器也是一种内存管理器，负责回收不可达对象的内存空间。
-
-- heap dumper
-
-提供堆转储功能。
-
-- classloading service
-
-提供类加载模块的性能监控和管理服务。
-
-- memory pool
-
-内存池管理模块。内存池表示由jvm管理的内存区域。
-
-- attach listener
-
-jvm系统初始化时启动名为"Attach Listener"的守护线程。为客户端的jvm监控工具提供连接(attach)服务.
-6. runtime
+### Runtime
 
 runtime是运行时模块，为其他系统组件提供运行时支持,如线程、安全点、PerfData、Stub例程、反射、VMOperation以及互斥锁等组件。
