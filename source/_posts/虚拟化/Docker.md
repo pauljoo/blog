@@ -27,6 +27,10 @@ yum install docker
 ## Docker Registry搭建  
 ```
 docker run -d -p 5000:5000 -v /data/registry:/var/lib/registry --restart=always --name registry registry:2
+# 配置非安全访问的仓库IP:端口号
+/etc/docker/daemon.json 
+"insecure-registries":["10.0.2.15:5000"]
+
 docker push 192.168.1.62:5000/xpanda/busybox
 docker pull 192.168.1.62:5000/xpanda/busybox
 ```
@@ -40,7 +44,6 @@ docker images
 docker rmi
 #删除容器实例
 docker rm
-docker logs -f --tail=100 6aa2172c8742
 #下载镜像
 docker pull quay.io/coreos/etcd:v3.2.16
 #构建镜像
@@ -50,5 +53,6 @@ docker run -d -p 8080:8080 -p 443:443 --ip 10.20.0.1 -v /data/configs/nginx/conf
 #进入容器
 docker exec -it 5c61a04b14fc /bin/bash
 #日志查看
+docker logs -f --tail=100 6aa2172c8742
 journalctl -u docker.service -n
 ```

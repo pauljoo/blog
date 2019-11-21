@@ -43,5 +43,60 @@ Pod是k8s的最重要也最基本的概念。每个Pod都有一个特殊的被�
 
 ## 安装 
 
-### 下载
-`wget https://github.com/kubernetes/kubernetes/releases/download/v1.10.9/kubernetes.tar.gz`
+```shell
+systemctl stop firewalld
+yum install -y docker etcd kubernetes
+vi /etc/sysconfig/docker
+OPTIONS='--selinux-enabled=false --log-driver=journald --signature-verification=false'
+systemctl start etcd
+systemctl start docker
+systemctl start kube-apiserver
+systemctl start kube-controller-manager
+systemctl start kube-scheduler
+systemctl start kubelet
+systemctl start kube-proxy
+```
+
+## 例子
+定义RC文件
+定义SVC文件
+### mysql
+```
+kubectl create -f mysql-rc.yaml
+kubectl create -f mysql-svc.yaml
+```
+### myweb
+```
+kubectl create -f myweb-rc.yaml
+kubectl get rc
+kubectl get pod
+kubectl create -f myweb-svc.yaml
+kubectl get svc
+```
+## FAQ
+
+### unable to create pods: No API token found for service account "default"
+```
+vi /etc/kubernetes/apiserver 
+KUBE_ADMISSION_CONTROL="--admission-control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota"
+# 去除SecurityContextDeny,ServiceAccount
+# 重启
+systemctl restart kube-apiserver
+```
+
+### No such image: registry.access.redhat.com/rhel7/pod-infrastructure:latest"
+```
+docker search pod-infrastructure
+docker pull docker.io/tianyebj/pod-infrastructure
+docker tag docker.io/tianyebj/pod-infrastructure 10.0.2.15:5000/pod-infrastructure
+docker push 10.0.2.15:5000/pod-infrastructure
+# 配置基础镜像
+vi /etc/kubernetes/kubelet 
+KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=10.0.2.11:5000/pod-infrastructure:latest"
+
+systemctl restart kube-apiserver
+systemctl restart kube-controller-manager
+systemctl restart kube-scheduler
+systemctl restart kubelet
+systemctl restart kube-proxy
+```
