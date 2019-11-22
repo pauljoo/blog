@@ -63,18 +63,22 @@ systemctl start kube-proxy
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
 enabled=1
-gpgcheck=1
-repo_gpgcheck=1
-gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+gpgcheck=0
+repo_gpgcheck=0
+gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
 EOF
 yum install -y kubectl
 
-vim /etc/docker/daemon.js
-"exec-opts": ["native.cgroupdriver=cgroupfs"]
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
+  && chmod +x minikube
 
-minikube start --image-mirror-country='cn' --image-repository='registry.cn-hangzhou.aliyuncs.com/google_containers'
+sudo mkdir -p /usr/local/bin/
+sudo install minikube /usr/local/bin/
+
+
+minikube start --vm-driver=none --image-mirror-country='cn' --image-repository='registry.cn-hangzhou.aliyuncs.com/google_containers'
 ```
 ## 例子
 定义RC文件
@@ -118,4 +122,18 @@ systemctl restart kube-controller-manager
 systemctl restart kube-scheduler
 systemctl restart kubelet
 systemctl restart kube-proxy
+```
+
+### "cgroupfs" is different from docker cgroup driver: "systemd"
+```shell
+vim /etc/docker/daemon.json
+"exec-opts": ["native.cgroupdriver=cgroupfs"]
+# 或者
+vi /usr/lib/systemd/system/docker.service
+```
+
+### Error loading config file "/var/lib/minikube/kubeconfig": open /var/lib/minikube/kubeconfig: permission denied
+```shell
+vim /etc/selinux/config
+SELINUX=disabled
 ```
