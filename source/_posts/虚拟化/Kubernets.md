@@ -43,6 +43,7 @@ Pod是k8s的最重要也最基本的概念。每个Pod都有一个特殊的被�
 
 ## 安装 
 
+### kubernetes
 ```shell
 systemctl stop firewalld
 yum install -y docker etcd kubernetes
@@ -57,6 +58,24 @@ systemctl start kubelet
 systemctl start kube-proxy
 ```
 
+### minikube
+```shell
+cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+EOF
+yum install -y kubectl
+
+vim /etc/docker/daemon.js
+"exec-opts": ["native.cgroupdriver=cgroupfs"]
+
+minikube start --image-mirror-country='cn' --image-repository='registry.cn-hangzhou.aliyuncs.com/google_containers'
+```
 ## 例子
 定义RC文件
 定义SVC文件
