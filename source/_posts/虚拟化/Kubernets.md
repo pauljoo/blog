@@ -78,7 +78,7 @@ sudo mkdir -p /usr/local/bin/
 sudo install minikube /usr/local/bin/
 
 
-minikube start --vm-driver=none --image-mirror-country='cn' --image-repository='registry.cn-hangzhou.aliyuncs.com/google_containers'
+minikube start --vm-driver=none --image-mirror-country='cn' --image-repository='registry.cn-hangzhou.aliyuncs.com/google_containers' --apiserver-ips=['192.168.0.1'] --service-cluster-ip-range=192.168.0.0/16
 ```
 ## 例子
 定义RC文件
@@ -136,4 +136,25 @@ vi /usr/lib/systemd/system/docker.service
 ```shell
 vim /etc/selinux/config
 SELINUX=disabled
+```
+
+### Failed to get system container stats for "/system.slice/kubelet.service"
+```shell
+/etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+--runtime-cgroups=/systemd/system.slice --kubelet-cgroups=/systemd/system.slice
+systemctl daemon-reload
+systemctl restart kubelet
+```
+
+### Failed to list *v1.Endpoints: Get https://10.96.0.1:443/api/v1/endpoints?limit=500&resourceVersion=0:
+当您使用kubeadm init时，请指定pod-network-cidr。确保主机/主网络的IP不在您引用的子网中。
+即如果您的网络运行在192.168.*.*使用10.0.0.0/16
+如果您的网络是10.0.*.*使用192.168.0.0/16
+```shell
+--pod-network-cidr=192.168.0.0/16
+# minikube
+--service-cluster-ip-range=192.168.0.0/16
+
+# 增加路由规则minikube ip查询出10.0.2.15
+ip route add 192.168.0.0/16 via 10.0.2.15
 ```
