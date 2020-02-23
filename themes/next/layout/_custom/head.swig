@@ -1,4 +1,4 @@
 {#
 Custom head.
 #}
-<script src="http://xpanda.info/echarts/echarts.min.js"></script>
+<script src="https://www.xpanda.info/echarts/echarts.min.js"></script>
