@@ -1,0 +1,1 @@
+./ci/run_envoy_docker.sh './ci/do_ci.sh bazel.release'
