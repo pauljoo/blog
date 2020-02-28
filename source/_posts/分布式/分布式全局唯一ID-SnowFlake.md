@@ -5,3 +5,4 @@ categories:
 - 分布式
 tags:
 ---
+SnowFlake算法生成id的结果是一个64bit大小的整数。
