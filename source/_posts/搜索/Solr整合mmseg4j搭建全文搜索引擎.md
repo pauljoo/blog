@@ -6,20 +6,24 @@ categories:
 tags:
 - Solr
 ---
-###下载
+## 下载
 solr:http://lucene.apache.org/solr/
 mmseg4j:https://code.google.com/p/mmseg4j/
 oracle
 tomcat-7.0.39:http://tomcat.apache.org/
-###简介
-####Solr
+
+## 简介
+### Solr
 Lucene是apache软件基金会4 jakarta项目组的一个子项目，是一个开放源代码的全文检索引擎工具包，即它不是一个完整的全文检索引擎，而是一个全文检索引擎的架构，提供了完整的查询引擎和索引引擎，部分文本分析引擎（英文与德文两种西方语言）。
 Solr是一个高性能，基于Lucene的全文搜索服务器。同时对其进行了扩展，提供了比Lucene更为丰富的查询语言，同时实现了可配置、可扩展并对查询性能进行了优化，并且提供了一个完善的功能管理界面，是一款非常优秀的全文搜索引擎。
-####mmseg4j
+
+### mmseg4j
 mmseg4j用Chih-Hao Tsai 的MMSeg算法实现的中文分词器，并实现lucene的analyzer和solr的TokenizerFactory以方便在Lucene和Solr中使用。 MMSeg 算法有两种分词方法：Simple和Complex，都是基于正向最大匹配。Complex加了四个规则过虑。官方说：词语的正确识别率达到了 98.41%。mmseg4j已经实现了这两种分词算法。
-####zookeeper
+
+### zookeeper
 ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、名字服务、分布式同步、组服务等。
-###配置
+
+## 配置
 将solr-4.5.0.zip解压开后，复制/example/webapps/solr.war复制到tomcat/webapp目录下
 
 - 配置solr/home
