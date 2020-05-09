@@ -1,8 +1,8 @@
 ---
-title: Ripple
+title: 面向对象分析与设计-Ripple
 date: 2018-11-12 19:39:40
 categories:
-- 管理
+- 系统设计
 tags:
 ---
 |阶段||制品|UML|
