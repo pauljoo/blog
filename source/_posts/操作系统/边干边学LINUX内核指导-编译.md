@@ -6,3 +6,7 @@ categories:
 tags:
 - 边干边学LINUX内核指导
 ---
+## 环境准备
+1. 操作系统Fedora Core 5
+
+## 配置内核
