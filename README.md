@@ -1,12 +1,9 @@
 # Blog
 
-```dockerfile
-FROM centos:centos7.7.1908
-
-RUN yum install -y epel-release && \
-yum install -y nodejs && npm install hexo-cli -g 
-
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+## 构建
+```shell
+docker build -t blog:latest .
+docker run -d --name=blog --net=host blog
 ```
 ## 常用命令
 
