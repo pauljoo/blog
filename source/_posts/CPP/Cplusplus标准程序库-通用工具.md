@@ -2,7 +2,7 @@
 title: C++标准程序库-通用工具
 date: 2018-11-16 20:04:09
 categories:
-- 语言
+- CPP
 tags:
 ---
 ## Pair和Tuple

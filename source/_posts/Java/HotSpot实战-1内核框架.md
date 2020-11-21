@@ -51,14 +51,26 @@ tags:
 
 ### Prims
 
-prims模块定义了外部接口，允许外部程序访问内部状态信息。
+Prims 模块定义了外部接口，允许外部程序访问内部状态信息。
 
-比如，jni模块，jvm模块，jvmti模块，perf模块。
+- JNI 模块
+- JVM 模块
+- JVMTI 模块
+- Perf 模块
 
 ### Services
 
-services模块主要包含9个主要子模块(management,memory service,thread service, runtime service, memory manager, heap dumper, classloading service, memory pool,attach listener)。
+Services 模块为JVM提供了JMX等功能。
+
+主要包含9个主要子模块(management, memory service, thread service, runtime service, memory manager, heap dumper, classloading service, memory pool, attach listener)。
 
 ### Runtime
 
-runtime是运行时模块，为其他系统组件提供运行时支持,如线程、安全点、PerfData、Stub例程、反射、VMOperation以及互斥锁等组件。
+Runtime 是运行时模块，为其他系统组件提供运行时支持。
+
+JVM 在运行时需要的很多功能， 如线程、安全点、PerfData、Stub例程、反射、VMOperation以及互斥锁等组件。
+
+#### VMOperation模块
+
+ThreadStop
+ThreadDump
