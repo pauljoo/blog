@@ -34,6 +34,15 @@ docker run -d -p 5000:5000 -v /data/registry:/var/lib/registry --restart=always 
 docker push 192.168.1.62:5000/xpanda/busybox
 docker pull 192.168.1.62:5000/xpanda/busybox
 ```
+
+## Docker 国内镜像
+```
+vi /etc/docker/daemon.json
+{
+    "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"]
+}
+systemctl restart docker.service
+```
 ## 常用Docker命令
 
 ```

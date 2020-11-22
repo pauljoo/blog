@@ -1,5 +1,5 @@
 ---
-title: vscode
+title: Visual Studio Code
 date: 2018-12-30 16:55:58
 categories:
 - 其他

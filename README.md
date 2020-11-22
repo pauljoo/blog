@@ -8,6 +8,8 @@ docker run -d --name=blog --net=host blog
 ## 常用命令
 
 ```shell
+npm config set registry https://registry.npm.taobao.org
+npm install
 hexo clean
 hexo generate
 hexo deploy
