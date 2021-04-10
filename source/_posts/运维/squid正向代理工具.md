@@ -1,30 +1,35 @@
 ---
-title: obfsproxy流量混淆工具
+title: squid正向代理工具
 date: 2021-04-10 10:56:57
 categories:
 - 运维
 tags:
 ---
 
-https://github.com/pauljoo/obfsproxy.git
-# 镜像构建
+# 安装
 ```shell
-docker pull python:3.8.2
-docker run -d --net=host python:3.8.2 /bin/bash -lc "tail -f /dev/null"
-git clone https://github.com/dounine/obfsproxy.git
-tar -zxvf obfsproxy-0.2.13.tar.gz
-apt-get update
-apt-get install -y python-twisted python-pyptlib python-crypto python-yaml
+yum install -y squid httpd
+```
+# 密码
+
+## 创建密码：(设置为8位密码)
+```shell
+htpasswd -c -d /etc/squid/passwd <username>
 ```
 
-# 服务端
-监听3394端口，转发到本地的2294端口
-```shell
-./bin/obfsproxy obfs3 --dest=127.0.0.1:2294 server 0.0.0.0:3394
+## 修改配置文件添加密码验证：
+在# INSERT YOUR OWN RULE(S) HERE TO ALLOW ACCESS FROM YOUR CLIENTS下添加
+```
+auth_param basic program /usr/lib64/squid/basic_ncsa_auth /etc/squid/passwd
+auth_param basic credentialsttl 2 hours
+acl ncsa_users proxy_auth REQUIRED
+http_access allow ncsa_users
 ```
 
-# 客户端
-监听9999端口，转发到远程的3394端口
+# 命令
 ```shell
-./bin/obfsproxy obfs3 --dest=REMOTE:3394 client 0.0.0.0:9999
+#启动
+squid start
+#关闭
+squid -k interrupt
 ```
